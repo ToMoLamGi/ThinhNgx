@@ -94,9 +94,12 @@ input{font:inherit;padding:10px;border-radius:10px;border:2px solid var(--acc);b
 .qp .q{font-size:clamp(12px,2.3cqw,18px)}
 .qp .o{font-size:clamp(11px,2cqw,16px);padding:.6em .9em}
 .qp .s{font-size:clamp(10px,1.6cqw,14px)}
+/* Chữ ký Pang góc dưới phải */
+#pang{position:fixed;right:max(8px,env(safe-area-inset-right,0px));bottom:max(6px,env(safe-area-inset-bottom,0px));font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--ink);opacity:.45;pointer-events:none;z-index:50}
 </style>
 </head>
 <body>
+<div id="pang">Pang</div>
 <div id="app">
  <img id="logo" alt="FPT Education – FPT Polytechnic">
  <div id="stage"><div id="band"></div><canvas id="c" width="1280" height="720"></canvas><div id="hud"><button id="bp" aria-label="Tạm dừng" title="Tạm dừng (Esc)">❚❚</button><button id="bg" aria-label="Hướng dẫn" title="Hướng dẫn">?</button><button id="snd" aria-label="Bật/tắt âm thanh" title="Bật/tắt âm thanh"></button></div><div id="ov"></div></div>
@@ -443,8 +446,8 @@ function draw(){
  p.en.forEach(e=>{
   const x=e.x-cam;if(x<-60||x>W+60)return;
   X.globalAlpha=e.ht>0&&e.ht%4<2?.35:1;
-  if(e.big)dimg(G.e2,x+e.w/2,e.y+e.h+2,50,e.f<0);
-  else dimg(G.e1,x+e.w/2,e.y+e.h+2,42,e.f<0);
+  if(e.big)dimg(G.e2,x+e.w/2,e.y+e.h+2,50,e.f>0);
+  else dimg(G.e1,x+e.w/2,e.y+e.h+2,42,e.f>0);
   X.globalAlpha=1;
  });
  if(b.on){
